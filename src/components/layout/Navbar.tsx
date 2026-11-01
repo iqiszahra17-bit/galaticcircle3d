@@ -80,7 +80,7 @@ export const Navbar: React.FC<Props> = ({
           </div>
         </button>
 
-        {/* Desktop Navigation (5 Main Tabs + Leaderboard) */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2">
           <button
             onClick={() => handleNav('landing')}
@@ -139,18 +139,6 @@ export const Navbar: React.FC<Props> = ({
           >
             <User className="w-4 h-4 text-neon-cyan" />
             Profil
-          </button>
-
-          <button
-            onClick={() => handleNav('leaderboard')}
-            className={`px-3 py-1.5 rounded-xl text-xs lg:text-sm font-semibold flex items-center gap-1.5 transition-all ${
-              activePage === 'leaderboard'
-                ? 'bg-space-surface text-neon-gold border border-neon-gold/40 shadow-sm'
-                : 'text-neon-white/70 hover:text-neon-white hover:bg-space-surface/50'
-            }`}
-          >
-            <Trophy className="w-4 h-4 text-neon-gold" />
-            Peringkat
           </button>
 
           {currentUser?.isAdmin && (
@@ -377,18 +365,6 @@ export const Navbar: React.FC<Props> = ({
                 >
                   <User className="w-4 h-4 text-neon-cyan" />
                   <span>Profil</span>
-                </button>
-
-                <button
-                  onClick={() => handleNav('leaderboard')}
-                  className={`w-full p-3 rounded-2xl flex items-center gap-3 text-xs font-bold font-orbitron transition-all ${
-                    activePage === 'leaderboard'
-                      ? 'bg-gradient-to-r from-neon-gold/20 to-amber-500/20 border border-neon-gold text-neon-white shadow-neon-gold/20 shadow-md'
-                      : 'bg-space-deep/60 text-neon-white/70 hover:text-neon-white border border-transparent'
-                  }`}
-                >
-                  <Trophy className="w-4 h-4 text-neon-gold" />
-                  <span>Papan Peringkat</span>
                 </button>
 
                 {currentUser?.isAdmin && (

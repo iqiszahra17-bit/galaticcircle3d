@@ -380,7 +380,7 @@ export const MateriPage: React.FC<Props> = ({
         'Menghitung panjang busur lingkaran dengan rumus: s = (θ / 360°) × 2πr.',
         'Menghitung luas juring (sektor lingkaran) dengan rumus: A = (θ / 360°) × πr².',
         'Menentukan luas tembereng lingkaran: Luas Juring dikurangi Luas Segitiga.',
-        'Menggunakan nilai aproksimasi π = 22/7 untuk kelipatan 7 atau 3,14 secara tepat.'
+        'Menerapkan konstanta lingkaran secara mandiri dan akurat sesuai karakteristik soal.'
       ],
       materiContent: [
         {
@@ -420,8 +420,8 @@ export const MateriPage: React.FC<Props> = ({
         {
           title: 'Contoh 1: Menghitung Panjang Busur Orbit Cincin Arcadia',
           problem:
-            'Sebuah wahana antariksa melintasi busur orbit dengan sudut pusat θ = 90° pada lingkaran beradius r = 14 cm. Tentukan panjang lintasan busur yang dilalui wahana! (Gunakan π = 22/7)',
-          diketahui: 'θ = 90°, r = 14 cm, π = 22/7',
+            'Sebuah wahana antariksa melintasi busur orbit dengan sudut pusat θ = 90° pada lingkaran beradius r = 14 cm. Tentukan panjang lintasan busur yang dilalui wahana!',
+          diketahui: 'θ = 90°, r = 14 cm',
           ditanya: 'Panjang busur s',
           formula: 's = (θ / 360°) × 2πr',
           calculationSteps: [
@@ -434,8 +434,8 @@ export const MateriPage: React.FC<Props> = ({
         {
           title: 'Contoh 2: Menghitung Luas Juring Solar Panel',
           problem:
-            'Sebuah panel surya berbentuk juring lingkaran memiliki sudut pusat 60° dan jari-jari r = 21 cm. Hitunglah luas penampang solar panel tersebut! (Gunakan π = 22/7)',
-          diketahui: 'θ = 60°, r = 21 cm, π = 22/7',
+            'Sebuah panel surya berbentuk juring lingkaran memiliki sudut pusat 60° dan jari-jari r = 21 cm. Hitunglah luas penampang solar panel tersebut!',
+          diketahui: 'θ = 60°, r = 21 cm',
           ditanya: 'Luas juring A',
           formula: 'A = (θ / 360°) × πr²',
           calculationSteps: [
@@ -450,7 +450,7 @@ export const MateriPage: React.FC<Props> = ({
         {
           id: 'ex-arc-1',
           question:
-            'Sebuah juring lingkaran dengan sudut pusat 45° memiliki jari-jari 28 cm. Berapakah panjang busurnya? (π = 22/7)',
+            'Sebuah juring lingkaran dengan sudut pusat 45° memiliki jari-jari 28 cm. Berapakah panjang busurnya?',
           options: [
             { id: 'a', text: '18 cm', isCorrect: false },
             { id: 'b', text: '22 cm', isCorrect: true },
@@ -463,7 +463,7 @@ export const MateriPage: React.FC<Props> = ({
         {
           id: 'ex-arc-2',
           question:
-            'Jika luas juring lingkaran beradius 14 cm dengan sudut pusat 90° adalah A, berapakah nilai A? (π = 22/7)',
+            'Jika luas juring lingkaran beradius 14 cm dengan sudut pusat 90° adalah A, berapakah nilai A?',
           options: [
             { id: 'a', text: '144 cm²', isCorrect: false },
             { id: 'b', text: '154 cm²', isCorrect: true },
@@ -1022,7 +1022,7 @@ export const MateriPage: React.FC<Props> = ({
               Tips Menghadapi Soal Misi Geometri:
             </span>
             <ul className="space-y-1.5 text-[#C6B2D2]">
-              <li>• Selalu perhatikan apakah jari-jari yang diberikan merupakan kelipatan 7 untuk mempermudah perhitungan dengan π = 22/7.</li>
+              <li>• Selalu perhatikan karakteristik jari-jari atau diameter yang diberikan untuk menentukan strategi perhitungan yang paling efektif.</li>
               <li>• Pada GSPL dan GSPD, pastikan selisih atau jumlah jari-jari dikuadratkan terlebih dahulu sebelum dikurangkan dari d².</li>
               <li>• Ingat bahwa besar sudut pusat selalu 2 kali lipat sudut keliling jika menghadap busur yang sama.</li>
             </ul>

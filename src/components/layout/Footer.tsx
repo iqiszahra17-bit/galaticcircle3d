@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
             <li>Matematika Wajib / Peminatan SMA Kelas XI</li>
             <li>Visualisasi SVG Vektor Interaktif</li>
             <li>Toleransi Radikal & Desimal Eksak</li>
-            <li>Leaderboard Publik Bebas Data Sensitif</li>
+            <li>Data & Privasi Siswa Terlindungi</li>
           </ul>
         </div>
       </div>

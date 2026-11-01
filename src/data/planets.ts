@@ -90,7 +90,7 @@ export const PLANETS: Planet[] = [
       {
         title: 'Luas Juring Lingkaran',
         formula: 'A = (θ / 360°) × πr²',
-        description: 'A = luas juring, θ = sudut pusat, r = jari-jari (Gunakan π = 22/7)'
+        description: 'A = luas juring, θ = sudut pusat, r = jari-jari'
       }
     ],
     color: {

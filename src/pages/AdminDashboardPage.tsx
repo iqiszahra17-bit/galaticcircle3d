@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { UserProfile, MissionResult, LeaderboardEntry } from '../types/game';
+import { UserProfile, MissionResult } from '../types/game';
 import { gameService } from '../services/gameService';
 import { csvExporter } from '../services/csvExporter';
 import { soundEffects } from '../utils/soundEffects';
@@ -26,7 +26,6 @@ interface Props {
 export const AdminDashboardPage: React.FC<Props> = ({ currentUser, onBackToApp }) => {
   const [users, setUsers] = useState<UserProfile[]>([]);
   const [missions, setMissions] = useState<MissionResult[]>([]);
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [userSearch, setUserSearch] = useState('');
   const [activeTab, setActiveTab] = useState<'users' | 'missions'>('users');
@@ -38,14 +37,12 @@ export const AdminDashboardPage: React.FC<Props> = ({ currentUser, onBackToApp }
     if (!isAuthorized) return;
     setLoading(true);
     try {
-      const [uList, mList, lList] = await Promise.all([
+      const [uList, mList] = await Promise.all([
         gameService.getAdminUserList(),
         gameService.getAdminMissionHistory(),
-        gameService.getLeaderboard(),
       ]);
       setUsers(uList);
       setMissions(mList);
-      setLeaderboard(lList);
     } catch (err) {
       console.error('Failed to load admin data:', err);
     } finally {
@@ -135,18 +132,6 @@ export const AdminDashboardPage: React.FC<Props> = ({ currentUser, onBackToApp }
           >
             <FileSpreadsheet className="w-3.5 h-3.5" />
             <span>CSV Pemain</span>
-          </button>
-
-          <button
-            onClick={() => {
-              soundEffects.playClick();
-              csvExporter.exportLeaderboard(leaderboard);
-            }}
-            className="px-3.5 py-2 rounded-xl bg-space-surface border border-neon-gold/40 hover:border-neon-gold text-neon-gold hover:bg-neon-gold/10 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
-            title="Ekspor data peringkat leaderboard ke format CSV"
-          >
-            <FileSpreadsheet className="w-3.5 h-3.5" />
-            <span>CSV Leaderboard</span>
           </button>
 
           <button

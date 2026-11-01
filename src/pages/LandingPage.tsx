@@ -75,35 +75,6 @@ export const LandingPage: React.FC<Props> = ({
               </span>
             </div>
           </div>
-
-          {/* Palet Warna Box (From User Reference) */}
-          <div className="p-4 rounded-3xl bg-space-surface/90 border border-space-border/60 shadow-xl w-full sm:w-auto shrink-0">
-            <span className="text-[11px] font-bold text-neon-white/60 uppercase tracking-widest font-rajdhani block mb-3 text-center sm:text-left">
-              Palet Warna
-            </span>
-            <div className="grid grid-cols-4 gap-3 text-center">
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#050B1A] border-2 border-white/20 mx-auto shadow-md" />
-                <span className="text-[10px] font-bold text-neon-white block mt-1">Midnight Navy</span>
-                <span className="text-[9px] text-neon-white/40 font-mono">#050B1A</span>
-              </div>
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#00E5FF] border-2 border-white/20 mx-auto shadow-neon-cyan/40 shadow-md" />
-                <span className="text-[10px] font-bold text-neon-cyan block mt-1">Neon Cyan</span>
-                <span className="text-[9px] text-neon-white/40 font-mono">#00E5FF</span>
-              </div>
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#7061FF] border-2 border-white/20 mx-auto shadow-neon-violet/40 shadow-md" />
-                <span className="text-[10px] font-bold text-neon-violet block mt-1">Cosmic Violet</span>
-                <span className="text-[9px] text-neon-white/40 font-mono">#7061FF</span>
-              </div>
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#FFD34E] border-2 border-white/20 mx-auto shadow-neon-gold/40 shadow-md" />
-                <span className="text-[10px] font-bold text-neon-gold block mt-1">Starlight Gold</span>
-                <span className="text-[9px] text-neon-white/40 font-mono">#FFD34E</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

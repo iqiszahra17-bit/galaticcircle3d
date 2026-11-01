@@ -25,7 +25,6 @@ interface Props {
   userProgress: Record<string, GameProgress>;
   onBack: () => void;
   onContinueGame: (planetId: string) => void;
-  onOpenLeaderboard: () => void;
   onProfileUpdated?: (updated: UserProfile) => void;
 }
 
@@ -34,7 +33,6 @@ export const DashboardPage: React.FC<Props> = ({
   userProgress,
   onBack,
   onContinueGame,
-  onOpenLeaderboard,
   onProfileUpdated,
 }) => {
   const [isEditingName, setIsEditingName] = useState(false);
@@ -250,18 +248,6 @@ export const DashboardPage: React.FC<Props> = ({
               ))}
             </div>
           </div>
-
-          {/* Leaderboard CTA Button */}
-          <button
-            onClick={() => {
-              soundEffects.playClick();
-              onOpenLeaderboard();
-            }}
-            className="w-full py-3.5 rounded-2xl bg-space-deep border border-neon-gold/40 hover:border-neon-gold text-neon-gold font-extrabold text-xs sm:text-sm font-orbitron tracking-wider flex items-center justify-center gap-2 transition-all hover:bg-neon-gold/10 shadow-lg"
-          >
-            <Trophy className="w-4 h-4" />
-            <span>Lihat Papan Peringkat Global</span>
-          </button>
         </div>
       </div>
 

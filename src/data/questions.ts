@@ -608,7 +608,7 @@ export const QUESTIONS: Question[] = [
     title: 'Lengkungan Busur Koridor Emas',
     difficulty: 'Medium',
     topic: 'Panjang Busur Lingkaran',
-    questionText: 'Lingkaran berjari-jari 14 cm memiliki sudut pusat 90°. Tentukan panjang busurnya. Gunakan π = 22/7.',
+    questionText: 'Lingkaran berjari-jari 14 cm memiliki sudut pusat 90°. Tentukan panjang busurnya.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Busur Lingkaran (r = 14 cm, θ = 90°)',
@@ -630,14 +630,14 @@ export const QUESTIONS: Question[] = [
     acceptableAnswers: ['22', '22 cm', '22cm'],
     unit: 'cm',
     hints: [
-      'Gunakan rumus panjang busur: s = (θ/360°) × 2πr.',
-      'Sederhanakan rasio sudut: 90°/360° = 1/4.',
-      'Hitung keliling lingkaran: 2 × (22/7) × 14 = 2 × 22 × 2 = 88 cm. Lalu kalikan 1/4 × 88.'
+      'Gunakan konsep panjang busur lingkaran: perbandingan sudut pusat terhadap satu putaran penuh 360°.',
+      'Sederhanakan rasio sudut pusat terlebih dahulu: 90°/360°.',
+      'Kalikan rasio sudut tersebut dengan keliling lingkaran penuh berdasarkan nilai jari-jari yang diketahui.'
     ],
     solutionSteps: [
       {
         title: 'Langkah 1: Identifikasi Data',
-        description: 'r = 14 cm, θ = 90°, π = 22/7.'
+        description: 'r = 14 cm, θ = 90°.'
       },
       {
         title: 'Langkah 2: Rumus Panjang Busur',
@@ -662,7 +662,7 @@ export const QUESTIONS: Question[] = [
     title: 'Sektor Kolektor Surya Arcadia',
     difficulty: 'Medium',
     topic: 'Luas Juring Lingkaran',
-    questionText: 'Lingkaran berjari-jari 21 cm memiliki sudut pusat 120°. Tentukan luas juringnya. Gunakan π = 22/7.',
+    questionText: 'Lingkaran berjari-jari 21 cm memiliki sudut pusat 120°. Tentukan luas juringnya.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Juring Lingkaran (r = 21 cm, θ = 120°)',
@@ -684,14 +684,14 @@ export const QUESTIONS: Question[] = [
     acceptableAnswers: ['462', '462 cm2', '462 cm²', '462cm2'],
     unit: 'cm²',
     hints: [
-      'Gunakan rumus luas juring: A = (θ/360°) × πr².',
-      'Sederhanakan pecahan sudut: 120°/360° = 1/3.',
-      'Hitung luas lingkaran penuh: (22/7) × 21 × 21 = 22 × 3 × 21 = 1386 cm². Lalu kalikan dengan 1/3.'
+      'Gunakan konsep luas juring lingkaran yang sebanding dengan sudut pusat terhadap 360°.',
+      'Sederhanakan rasio sudut pusat: 120°/360°.',
+      'Hitung luas lingkaran penuh terlebih dahulu, kemudian kalikan dengan rasio sudut tersebut.'
     ],
     solutionSteps: [
       {
         title: 'Langkah 1: Identifikasi Data',
-        description: 'r = 21 cm, θ = 120°, π = 22/7.'
+        description: 'r = 21 cm, θ = 120°.'
       },
       {
         title: 'Langkah 2: Rumus Luas Juring',
@@ -716,7 +716,7 @@ export const QUESTIONS: Question[] = [
     title: 'Rekonstruksi Sudut dari Luas Juring',
     difficulty: 'Hard',
     topic: 'Mencari Sudut Pusat dari Luas Juring',
-    questionText: 'Luas juring adalah 154 cm² dan jari-jari lingkaran 14 cm. Tentukan besar sudut pusatnya. Gunakan π = 22/7.',
+    questionText: 'Luas juring adalah 154 cm² dan jari-jari lingkaran 14 cm. Tentukan besar sudut pusatnya.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Mencari Sudut Pusat θ (A = 154 cm², r = 14 cm)',
@@ -738,9 +738,9 @@ export const QUESTIONS: Question[] = [
     acceptableAnswers: ['90', '90°', '90 derajat'],
     unit: '°',
     hints: [
-      'Pertama, hitung luas total lingkaran: Luas = πr² = (22/7) × 14².',
-      'Luas total = 22/7 × 196 = 22 × 28 = 616 cm².',
-      'Gunakan perbandingan: θ / 360° = Luas Juring / Luas Total = 154 / 616 = 1/4.'
+      'Hitung luas lingkaran penuh terlebih dahulu menggunakan jari-jari yang diketahui.',
+      'Gunakan perbandingan luas: θ / 360° = Luas Juring / Luas Lingkaran Penuh.',
+      'Tentukan besar sudut pusat θ dari perbandingan rasio yang didapatkan.'
     ],
     solutionSteps: [
       {
@@ -771,7 +771,7 @@ export const QUESTIONS: Question[] = [
     title: 'Sensor Kalibrasi Busur Melingkar',
     difficulty: 'Hard',
     topic: 'Mencari Sudut Pusat dari Panjang Busur',
-    questionText: 'Sebuah lingkaran berjari-jari 28 cm memiliki panjang busur 44 cm. Tentukan besar sudut pusatnya. Gunakan π = 22/7.',
+    questionText: 'Sebuah lingkaran berjari-jari 28 cm memiliki panjang busur 44 cm. Tentukan besar sudut pusatnya.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Mencari Sudut Pusat θ (r = 28 cm, s = 44 cm)',
@@ -793,14 +793,14 @@ export const QUESTIONS: Question[] = [
     acceptableAnswers: ['90', '90°', '90 derajat'],
     unit: '°',
     hints: [
-      'Hitung keliling penuh lingkaran terlebih dahulu: K = 2πr = 2 × (22/7) × 28.',
-      'K = 2 × 22 × 4 = 176 cm.',
-      'Bandingkan panjang busur dengan keliling: θ = (s / K) × 360° = (44 / 176) × 360°.'
+      'Hitung keliling lingkaran penuh terlebih dahulu menggunakan jari-jari yang diketahui.',
+      'Gunakan perbandingan panjang busur terhadap keliling lingkaran: θ / 360° = s / K.',
+      'Tentukan besar sudut pusat θ dengan mengalikan perbandingan tersebut dengan 360°.'
     ],
     solutionSteps: [
       {
         title: 'Langkah 1: Menghitung Keliling Lingkaran Penuh',
-        description: 'Dengan r = 28 cm dan π = 22/7:',
+        description: 'Dengan r = 28 cm:',
         calculation: 'Keliling = 2πr = 2 × (22 / 7) × 28 = 176 cm.'
       },
       {
@@ -826,7 +826,7 @@ export const QUESTIONS: Question[] = [
     title: 'Misi Orbit Eksplorasi Arcadia Prime',
     difficulty: 'Challenging',
     topic: 'Kombinasi Busur & Juring Skala Astronomis',
-    questionText: 'Sebuah wahana antariksa mengorbit planet Arcadia dengan jari-jari lintasan 42 km dan sudut pusat 120°. Tentukan panjang busur lintasan dan luas juring sektor orbit tersebut. Gunakan π = 22/7.',
+    questionText: 'Sebuah wahana antariksa mengorbit planet Arcadia dengan jari-jari lintasan 42 km dan sudut pusat 120°. Tentukan panjang busur lintasan dan luas juring sektor orbit tersebut.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Orbit Wahana Antariksa (r = 42 km, θ = 120°)',
@@ -860,9 +860,9 @@ export const QUESTIONS: Question[] = [
     expectedAnswer: 'Panjang busur = 88 km, Luas juring = 1.848 km²',
     acceptableAnswers: ['88 dan 1848', '88, 1848', '88, 1.848', '88 km dan 1848 km²'],
     hints: [
-      'Gunakan sudut pusat θ = 120°, sehingga perbandingannya adalah 120°/360° = 1/3.',
-      'Keliling lingkaran: 2 × (22/7) × 42 = 264 km. Panjang busur = 1/3 × 264.',
-      'Luas lingkaran: (22/7) × 42² = (22/7) × 1764 = 5544 km². Luas juring = 1/3 × 5544.'
+      'Gunakan sudut pusat θ = 120°, sehingga perbandingannya adalah 120°/360°.',
+      'Panjang busur diperoleh dari perbandingan sudut dikalikan keliling lingkaran penuh.',
+      'Luas juring diperoleh dari perbandingan sudut dikalikan luas lingkaran penuh.'
     ],
     solutionSteps: [
       {
@@ -1066,7 +1066,7 @@ export const QUESTIONS: Question[] = [
     title: 'Dekripsi Sektor Energi Juring Nexus',
     difficulty: 'Hard',
     topic: 'Kombinasi Sudut Pusat & Panjang Busur dari Luas Juring',
-    questionText: 'Luas juring adalah 231 cm² dan jari-jari lingkaran 21 cm. Tentukan besar sudut pusat dan panjang busurnya. Gunakan π = 22/7.',
+    questionText: 'Luas juring adalah 231 cm² dan jari-jari lingkaran 21 cm. Tentukan besar sudut pusat dan panjang busurnya.',
     diagramConfig: {
       type: 'arc_sector',
       title: 'Juring & Busur (A = 231 cm², r = 21 cm)',
@@ -1100,9 +1100,9 @@ export const QUESTIONS: Question[] = [
     expectedAnswer: 'Sudut pusat = 60°, Panjang busur = 22 cm',
     acceptableAnswers: ['60 dan 22', '60, 22', '60°, 22 cm'],
     hints: [
-      'Pertama, cari luas lingkaran total: L = (22/7) × 21² = 1386 cm².',
-      'Tentukan sudut pusat dari rasio luas: θ = (231 / 1386) × 360° = 1/6 × 360° = 60°.',
-      'Kedua, cari panjang busur dengan sudut 60°: s = (60/360) × 2 × (22/7) × 21 = 1/6 × 132.'
+      'Hitung luas lingkaran penuh terlebih dahulu untuk menentukan rasio luas juring terhadap luas lingkaran.',
+      'Tentukan sudut pusat θ dari rasio luas tersebut dikalikan 360°.',
+      'Gunakan sudut pusat yang diperoleh untuk menghitung panjang busur lingkaran.'
     ],
     solutionSteps: [
       {
@@ -1133,7 +1133,7 @@ export const QUESTIONS: Question[] = [
     title: 'Klimaks Nexus: Sintesis Multi-Sistem',
     difficulty: 'Challenging',
     topic: 'Sintesis Lengkap Busur, Juring & GSPL Riset Galaksi',
-    questionText: 'Sebuah wahana mengorbit planet dengan jari-jari lintasan 42 km dan sudut pusat 120°. Di area penelitian terdapat dua lingkaran berjari-jari 10 km dan 6 km dengan jarak antarpusat 26 km. Tentukan: (a) panjang busur lintasan wahana, (b) luas juring wahana, dan (c) panjang GSPL kedua lingkaran riset. Gunakan π = 22/7.',
+    questionText: 'Sebuah wahana mengorbit planet dengan jari-jari lintasan 42 km dan sudut pusat 120°. Di area penelitian terdapat dua lingkaran berjari-jari 10 km dan 6 km dengan jarak antarpusat 26 km. Tentukan: (a) panjang busur lintasan wahana, (b) luas juring wahana, dan (c) panjang GSPL kedua lingkaran riset.',
     diagramConfig: {
       type: 'orbit_complex',
       title: 'Sintesis Galaksi: Orbit Wahana (r = 42 km) & Dua Lingkaran Riset (10 km & 6 km)',
@@ -1179,10 +1179,9 @@ export const QUESTIONS: Question[] = [
     expectedAnswer: 'a. Panjang busur = 88 km, b. Luas juring = 1.848 km², c. GSPL = 2√165 km',
     acceptableAnswers: ['88, 1848, 2√165', '88, 1.848, 2√165', '88 km, 1848 km2, 2√165 km'],
     hints: [
-      'Bagian (a) & (b): Wahana memiliki r = 42 km, θ = 120°. Rasio = 120/360 = 1/3.',
-      'Panjang busur s = 1/3 × 2 × (22/7) × 42 = 88 km.',
-      'Luas juring A = 1/3 × (22/7) × 42² = 1848 km².',
-      'Bagian (c): R = 10 km, r = 6 km, d = 26 km. GSPL = √(d² − (R − r)²) = √(26² − 4²) = √(676 − 16) = √660 = √(4 × 165) = 2√165 km.'
+      'Bagian (a): Gunakan perbandingan sudut pusat 120°/360° dikalikan keliling lingkaran wahana.',
+      'Bagian (b): Gunakan perbandingan sudut pusat 120°/360° dikalikan luas lingkaran wahana.',
+      'Bagian (c): Hitung panjang garis singgung persekutuan luar (GSPL) menggunakan selisih jari-jari dan jarak antar-pusat wahana.'
     ],
     solutionSteps: [
       {

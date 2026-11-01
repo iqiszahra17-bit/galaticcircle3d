@@ -10,7 +10,6 @@ import { GalaxyMapPage } from './pages/GalaxyMapPage';
 import { MateriPage } from './pages/MateriPage';
 import { GameMissionPage } from './pages/GameMissionPage';
 import { ResultsPage } from './pages/ResultsPage';
-import { LeaderboardPage } from './pages/LeaderboardPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 
@@ -221,10 +220,9 @@ export const App: React.FC = () => {
             onBackToMap={() => navigateTo('map')}
             onNextPlanet={handleNextPlanet}
             hasNextPlanet={hasNextPlanet}
+            currentUser={currentUser}
           />
         )}
-
-        {activePage === 'leaderboard' && <LeaderboardPage />}
 
         {activePage === 'dashboard' && (
           <DashboardPage
@@ -245,7 +243,6 @@ export const App: React.FC = () => {
             userProgress={userProgress}
             onBack={() => navigateTo('landing')}
             onContinueGame={(planetId) => handleStartMission(planetId, false)}
-            onOpenLeaderboard={() => navigateTo('leaderboard')}
           />
         )}
 
