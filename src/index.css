@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-cosmic-bg: #170D24;
+  --color-cosmic-secondary: #24102F;
+  --color-cosmic-panel: #321442;
+  --color-purple-primary: #8D3CC7;
+  --color-neon-magenta: #FF55C8;
+  --color-soft-pink: #FFB5E8;
+  --color-star-gold: #FFD76A;
+  --color-check-green: #57E389;
+  --color-text-primary: #FFF5FF;
+  --color-text-secondary: #C6B2D2;
+  --color-locked: #62536D;
+}
+
+body {
+  background-color: #170D24;
+  color: #FFF5FF;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Glassmorphism futuristic panels in Cosmic Plum theme */
+.glass-panel {
+  background: rgba(50, 20, 66, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 85, 200, 0.22);
+  box-shadow: 0 8px 32px 0 rgba(23, 13, 36, 0.7);
+}
+
+.glass-panel-glow {
+  background: rgba(50, 20, 66, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 85, 200, 0.45);
+  box-shadow: 0 0 20px rgba(255, 85, 200, 0.3), inset 0 0 15px rgba(141, 60, 199, 0.2);
+}
+
+.glass-card-violet {
+  background: rgba(50, 20, 66, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(141, 60, 199, 0.35);
+  box-shadow: 0 0 25px rgba(141, 60, 199, 0.2);
+}
+
+.glass-card-gold {
+  background: rgba(50, 20, 66, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 215, 106, 0.35);
+  box-shadow: 0 0 25px rgba(255, 215, 106, 0.2);
+}
+
+/* Futuristic HUD tech border corners in Neon Magenta */
+.hud-corner {
+  position: relative;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.hud-corner::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #FF55C8;
+  border-left: 2px solid #FF55C8;
+}
+
+.hud-corner::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid #FF55C8;
+  border-right: 2px solid #FF55C8;
+}
+
+/* Neon text & glowing badges */
+.neon-glow-cyan,
+.neon-glow-magenta {
+  text-shadow: 0 0 10px rgba(255, 85, 200, 0.7), 0 0 25px rgba(255, 85, 200, 0.4);
+}
+
+.neon-glow-gold {
+  text-shadow: 0 0 10px rgba(255, 215, 106, 0.7), 0 0 25px rgba(255, 215, 106, 0.4);
+}
+
+.neon-glow-violet {
+  text-shadow: 0 0 10px rgba(141, 60, 199, 0.7), 0 0 25px rgba(141, 60, 199, 0.4);
+}
+
+/* Custom scrollbar in Cosmic Plum & Magenta */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #170D24;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #321442;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 85, 200, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF55C8;
+}
+
+/* Starfield canvas / animations */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.twinkle-star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.nebula-glow {
+  animation: pulseGlow 8s ease-in-out infinite;
+}
