@@ -1,11 +1,12 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { GameProgress, MissionResult, LeaderboardEntry, UserProfile, UserAchievement } from '../types/game';
+import { GameProgress, MissionResult, LeaderboardEntry, UserProfile, UserAchievement, MapScoreRecord, CampaignSession } from '../types/game';
 import { ACHIEVEMENTS } from '../data/achievements';
 import { PLANETS } from '../data/planets';
 
 const LOCAL_PROGRESS_KEY = 'galactic_circle_progress_db';
 const LOCAL_RESULTS_KEY = 'galactic_circle_results_db';
 const LOCAL_ACHIEVEMENTS_KEY = 'galactic_circle_user_achievements_db';
+const LOCAL_CAMPAIGN_KEY = 'galactic_circle_campaign_session_db';
 
 export class GameService {
   private isCloud(): boolean {
@@ -533,6 +534,74 @@ export class GameService {
 
     const raw = localStorage.getItem(LOCAL_RESULTS_KEY);
     return raw ? JSON.parse(raw) : [];
+  }
+
+  /**
+   * Get active 4-map campaign session for player
+   */
+  public getCampaignSession(userId: string): CampaignSession {
+    const raw = localStorage.getItem(`${LOCAL_CAMPAIGN_KEY}_${userId}`);
+    if (raw) {
+      try {
+        const parsed: CampaignSession = JSON.parse(raw);
+        if (parsed && parsed.mapScores) {
+          return parsed;
+        }
+      } catch (err) {
+        console.error('Failed to parse campaign session:', err);
+      }
+    }
+
+    const newSession: CampaignSession = {
+      sessionId: 'session-' + Date.now(),
+      userId,
+      mapScores: {},
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    try {
+      localStorage.setItem(`${LOCAL_CAMPAIGN_KEY}_${userId}`, JSON.stringify(newSession));
+    } catch {
+      // Storage fallback
+    }
+    return newSession;
+  }
+
+  /**
+   * Save campaign session to local storage
+   */
+  public saveCampaignSession(session: CampaignSession): void {
+    session.updatedAt = new Date().toISOString();
+    try {
+      localStorage.setItem(`${LOCAL_CAMPAIGN_KEY}_${session.userId}`, JSON.stringify(session));
+    } catch {
+      // Storage fallback
+    }
+  }
+
+  /**
+   * Record or update score for a specific map in the active campaign
+   */
+  public recordMapScore(userId: string, record: MapScoreRecord): CampaignSession {
+    const session = this.getCampaignSession(userId);
+    session.mapScores[record.planetId] = record;
+    this.saveCampaignSession(session);
+    return session;
+  }
+
+  /**
+   * Start a brand new 4-map campaign from scratch, resetting previous campaign scores
+   */
+  public resetCampaignSession(userId: string): CampaignSession {
+    const freshSession: CampaignSession = {
+      sessionId: 'session-' + Date.now(),
+      userId,
+      mapScores: {},
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    this.saveCampaignSession(freshSession);
+    return freshSession;
   }
 }
 

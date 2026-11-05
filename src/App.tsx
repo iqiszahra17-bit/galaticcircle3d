@@ -13,7 +13,7 @@ import { ResultsPage } from './pages/ResultsPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 
-import { UserProfile, GameProgress, MissionResult } from './types/game';
+import { UserProfile, GameProgress, MissionResult, CampaignSession, MapScoreRecord } from './types/game';
 import { Planet } from './types/math';
 import { PLANETS } from './data/planets';
 import { authService } from './services/authService';
@@ -32,6 +32,11 @@ export const App: React.FC = () => {
   const [isChallengeMode, setIsChallengeMode] = useState(false);
   const [userProgress, setUserProgress] = useState<Record<string, GameProgress>>({});
 
+  // 4-map campaign session tracking for cumulative score
+  const [campaignSession, setCampaignSession] = useState<CampaignSession>(() =>
+    gameService.getCampaignSession('guest')
+  );
+
   // Last completed mission result for ResultsPage
   const [lastMissionResult, setLastMissionResult] = useState<MissionResult | null>(null);
   const [lastQuestionHistory, setLastQuestionHistory] = useState<
@@ -46,9 +51,13 @@ export const App: React.FC = () => {
         setCurrentUser(profile);
         const prog = await gameService.getUserProgress(profile.id);
         setUserProgress(prog);
+        const session = gameService.getCampaignSession(profile.id);
+        setCampaignSession(session);
       } else {
         const guestProg = await gameService.getUserProgress('guest');
         setUserProgress(guestProg);
+        const session = gameService.getCampaignSession('guest');
+        setCampaignSession(session);
       }
     };
     initAuth();
@@ -58,6 +67,8 @@ export const App: React.FC = () => {
     setCurrentUser(user);
     const prog = await gameService.getUserProgress(user.id);
     setUserProgress(prog);
+    const session = gameService.getCampaignSession(user.id);
+    setCampaignSession(session);
   };
 
   const handleSignOut = async () => {
@@ -131,10 +142,38 @@ export const App: React.FC = () => {
       setNewlyUnlockedPlanetId(outcome.newlyUnlockedPlanetId);
     }
 
+    // 2. Record this map's actual score into the 4-map campaign session
+    const mapRecord: MapScoreRecord = {
+      planetId: results.planetId,
+      planetName: selectedPlanet.name,
+      order: selectedPlanet.order,
+      score: results.totalScore,
+      correctCount: results.correctCount,
+      wrongCount: Math.max(0, 5 - results.correctCount),
+      totalQuestions: 5,
+      accuracy: Math.round((results.correctCount / 5) * 100),
+      timeSpentSeconds: results.timeSpentSeconds,
+      completedAt: new Date().toISOString(),
+    };
+    const updatedCamp = gameService.recordMapScore(userToSave.id, mapRecord);
+    setCampaignSession(updatedCamp);
+
     setLastMissionResult(outcome.missionResult);
     setLastQuestionHistory(results.questionHistory);
     setActivePage('results');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleRestartNewCampaign = () => {
+    soundEffects.playClick();
+    const userId = currentUser ? currentUser.id : 'guest';
+    const freshCamp = gameService.resetCampaignSession(userId);
+    setCampaignSession(freshCamp);
+    handleStartMission('tangensia', false);
+  };
+
+  const handleProfileUpdated = (updatedUser: UserProfile) => {
+    setCurrentUser(updatedUser);
   };
 
   const handleModuleProgressUpdate = async (planetId: string, stars: number) => {
@@ -177,6 +216,7 @@ export const App: React.FC = () => {
             onStartExploring={() => navigateTo('map')}
             onViewGalaxyMap={() => navigateTo('map')}
             onOpenAuth={() => setIsAuthModalOpen(true)}
+            onProfileUpdated={handleProfileUpdated}
           />
         )}
 
@@ -216,9 +256,11 @@ export const App: React.FC = () => {
             planet={selectedPlanet}
             missionResult={lastMissionResult}
             questionHistory={lastQuestionHistory}
+            campaignSession={campaignSession}
             onReplay={() => handleStartMission(selectedPlanet.id, isChallengeMode)}
             onBackToMap={() => navigateTo('map')}
             onNextPlanet={handleNextPlanet}
+            onRestartNewCampaign={handleRestartNewCampaign}
             hasNextPlanet={hasNextPlanet}
             currentUser={currentUser}
           />
@@ -243,6 +285,7 @@ export const App: React.FC = () => {
             userProgress={userProgress}
             onBack={() => navigateTo('landing')}
             onContinueGame={(planetId) => handleStartMission(planetId, false)}
+            onProfileUpdated={handleProfileUpdated}
           />
         )}
 

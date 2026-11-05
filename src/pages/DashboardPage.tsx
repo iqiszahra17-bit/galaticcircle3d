@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserProfile, GameProgress } from '../types/game';
 import { soundEffects } from '../utils/soundEffects';
 import { authService } from '../services/authService';
@@ -37,6 +37,12 @@ export const DashboardPage: React.FC<Props> = ({
 }) => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(currentUser.displayName);
+
+  useEffect(() => {
+    if (currentUser?.displayName) {
+      setTempName(currentUser.displayName);
+    }
+  }, [currentUser?.displayName]);
 
   const completedMissionsCount = Object.values(userProgress).filter((p) => p.status === 'completed').length;
   const questionsDone = Object.values(userProgress).reduce((acc, p) => acc + (p.questionsCompleted || 0), 0);

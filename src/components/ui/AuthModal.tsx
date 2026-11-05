@@ -62,12 +62,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onSuccess, current
 
       const saved = await authService.updateProfile(updated);
       setSavedSuccess(true);
+      onSuccess(saved);
       setTimeout(() => {
-        onSuccess(saved);
         onClose();
         setSavedSuccess(false);
         setLoading(false);
-      }, 500);
+      }, 400);
     } catch {
       setLoading(false);
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserProfile } from '../types/game';
 import { soundEffects } from '../utils/soundEffects';
 import { authService } from '../services/authService';
@@ -37,11 +37,19 @@ export const LandingPage: React.FC<Props> = ({
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(currentUser?.displayName || 'KADET ANTARIKSA');
 
+  useEffect(() => {
+    if (currentUser?.displayName) {
+      setTempName(currentUser.displayName);
+    }
+  }, [currentUser?.displayName]);
+
   const handleSaveName = async (e: React.FormEvent) => {
     e.preventDefault();
     soundEffects.playCorrect();
     const updated = await authService.updatePlayerName(tempName);
-    if (onProfileUpdated) onProfileUpdated(updated);
+    if (onProfileUpdated) {
+      onProfileUpdated(updated);
+    }
     setIsEditingName(false);
   };
 

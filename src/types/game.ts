@@ -82,3 +82,24 @@ export interface PlayerStats {
   correctAnswersCount: number;
   averageAccuracy: number;
 }
+
+export interface MapScoreRecord {
+  planetId: string;
+  planetName: string;
+  order: number;
+  score: number;
+  correctCount: number;
+  wrongCount: number;
+  totalQuestions: number;
+  accuracy: number;
+  timeSpentSeconds: number;
+  completedAt: string;
+}
+
+export interface CampaignSession {
+  sessionId: string;
+  userId: string;
+  mapScores: Record<string, MapScoreRecord>;
+  createdAt: string;
+  updatedAt: string;
+}
